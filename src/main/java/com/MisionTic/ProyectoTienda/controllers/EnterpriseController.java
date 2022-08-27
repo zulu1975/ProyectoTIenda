@@ -1,16 +1,26 @@
 package com.MisionTic.ProyectoTienda.controllers;
 
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
+import com.MisionTic.ProyectoTienda.services.EnterpriseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+
+import java.util.List;
+
+@Controller
+@RequestMapping
 public class EnterpriseController {
 
-    @GetMapping("/saludar")
-    public Enterprise test(){
-        Enterprise en1 = new Enterprise(01,"SEQUAL","12345","4449870","Medellin");
-        return en1;
-
+    @Autowired
+    private EnterpriseService service;
+    @GetMapping("/listar")
+    public String listar(Model model){
+        List<Enterprise> enterprises = service.getData();
+        model.addAttribute("enterprises", enterprises);
+        return "index";
     }
 }
