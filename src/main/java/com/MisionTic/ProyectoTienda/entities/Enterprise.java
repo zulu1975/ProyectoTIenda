@@ -1,37 +1,44 @@
 package com.MisionTic.ProyectoTienda.entities;
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
+=======
+
+import javax.persistence.*;
+import java.io.Serializable;
+>>>>>>> 7ef0840803bf44180d380f9fb1da65017a48383e
 import java.time.LocalDate;
+import java.util.Calendar;
 
 @Entity
-@Table(name = "Enterprise")
-public class Enterprise {
+@Table(name = "enterprise")
+public class Enterprise implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "enterprise_id")
     private long id;
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
-    @Column(name = "Document")
+    @Column(name = "document")
     private String document;
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
-    @Column(name = "Aaddress")
+    @Column(name = "aaddress")
     private String address;
-    @Column(name = "CreatedAt")
+    @Column(name = "createdAt")
     private LocalDate createdAt;
-    @Column (name = "UpdatedAt")
+    @Column (name = "updatedAt")
     private LocalDate updateAt;
 
     public Enterprise(){
 
     }
 
-    public Enterprise(long id, String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
-        this.id = id;
+    public Enterprise(String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
         this.name = name;
         this.document = document;
         this.phone = phone;
@@ -44,9 +51,6 @@ public class Enterprise {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
