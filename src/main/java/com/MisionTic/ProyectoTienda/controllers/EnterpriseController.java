@@ -1,7 +1,6 @@
 package com.MisionTic.ProyectoTienda.controllers;
 
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
-import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
