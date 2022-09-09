@@ -15,7 +15,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/views/enterprises")
 public class EnterpriseController {
-
     //Aqui estamos inyectando las dependencias hacia el servicio
     @Autowired
     private IEnterpriseService enterpriseService;

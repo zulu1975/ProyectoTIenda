@@ -1,16 +1,13 @@
 package com.MisionTic.ProyectoTienda.entities;
-<<<<<<< HEAD
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
-=======
 
-import javax.persistence.*;
-import java.io.Serializable;
->>>>>>> 7ef0840803bf44180d380f9fb1da65017a48383e
+
 import java.time.LocalDate;
 import java.util.Calendar;
 
