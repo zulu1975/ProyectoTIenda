@@ -5,8 +5,8 @@ import com.MisionTic.ProyectoTienda.entities.Enterprise;
 import com.MisionTic.ProyectoTienda.repositories.EnterpriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 
 @Service
 public class EnterpriseService implements IEnterpriseService {
@@ -28,11 +28,11 @@ public class EnterpriseService implements IEnterpriseService {
 
     @Override
     public Enterprise searchById(Long id) {
-        return null;
+        return enterpriseRepository.findById(id).orElse(null);
     }
 
     @Override
     public void delete(Long id) {
-
+        enterpriseRepository.deleteById(id);
     }
 }
