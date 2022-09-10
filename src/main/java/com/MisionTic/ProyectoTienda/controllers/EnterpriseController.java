@@ -65,7 +65,7 @@ public class EnterpriseController {
      */
     @GetMapping("/update/{id}")
     public String updateEnterprise(@PathVariable("id") Long idEnterprise, Model model){
-        Enterprise enterprise = enterpriseService.searchById(idEnterprise);
+        Enterprise enterprise = enterpriseService.buscarPorId(idEnterprise);
         model.addAttribute("titulo", "Actualizar Empresa");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprises/createEnterprise";

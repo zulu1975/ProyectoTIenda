@@ -27,7 +27,7 @@ public class EnterpriseService implements IEnterpriseService {
     }
 
     @Override
-    public Enterprise searchById(Long id) {
+    public Enterprise buscarPorId(Long id) {
         return enterpriseRepository.findById(id).orElse(null);
     }
 

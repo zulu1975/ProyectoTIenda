@@ -3,7 +3,7 @@ package com.MisionTic.ProyectoTienda.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Calendar;
+
 
 
 @Entity
@@ -13,7 +13,7 @@ public class Enterprise implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "enterprise_id")
-    private Long id;
+    private long id;
     @Column(name = "name")
     private String name;
     @Column(name = "document")
@@ -23,15 +23,16 @@ public class Enterprise implements Serializable {
     @Column(name = "aaddress")
     private String address;
     @Column(name = "createdAt")
-    private LocalDate createdAt;
+    private LocalDate createdAt=LocalDate.now();
     @Column (name = "updatedAt")
-    private LocalDate updateAt;
+    private LocalDate updateAt=LocalDate.now();
 
     public Enterprise(){
 
     }
 
-    public Enterprise(String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
+    public Enterprise(long id, String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
+        this.id = id;
         this.name = name;
         this.document = document;
         this.phone = phone;
@@ -40,7 +41,7 @@ public class Enterprise implements Serializable {
         this.updateAt = updateAt;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

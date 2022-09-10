@@ -7,6 +7,6 @@ import java.util.List;
 public interface IEnterpriseService {
     public List<Enterprise> getAll();
     public void save(Enterprise enterprise);
-    public Enterprise searchById(Long id);
+    public Enterprise buscarPorId(Long id);
     public void delete(Long id);
 }
