@@ -38,8 +38,8 @@
                 <td th:text="${en.createdAt}"></td>
                 <td th:text="${en.updateAt}"></td>
                 <td>
-                    <a class="btn btn-warning">Update</a>
-                    <a class="btn btn-danger">Delete</a>
+                    <a class="btn btn-success" th:href="@{/views/enterprises/update/}+${en.id}" title="Editar registro">Update</a>
+                    <a class="btn btn-danger" th:href="@{/views/enterprises/delete/}+${en.id}" title="Eliminar registro">Delete</a>
                 </td>
             </tr>
             </tbody>

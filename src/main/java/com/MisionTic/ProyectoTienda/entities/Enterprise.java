@@ -14,10 +14,11 @@ import java.util.Calendar;
 @Entity
 @Table(name = "enterprise")
 public class Enterprise implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "enterprise_id")
-    private long id;
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "document")
@@ -44,8 +45,12 @@ public class Enterprise implements Serializable {
         this.updateAt = updateAt;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(){
+        this.id = id;
     }
 
 
