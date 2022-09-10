@@ -1,10 +1,7 @@
 package com.MisionTic.ProyectoTienda.controllers;
 
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
-<<<<<<< HEAD
 import com.MisionTic.ProyectoTienda.services.EnterpriseService;
-=======
->>>>>>> 7cfef73092e59ed23720da4421a9bdc402e2d915
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +13,6 @@ import java.util.List;
 @RequestMapping("/views/enterprise")
 public class EnterpriseController {
 
-    //Aqui estamos inyectando las dependencias hacia el servicio
     @Autowired
     private EnterpriseService pruebaService;
 
