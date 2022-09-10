@@ -4,32 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-
-
 @Entity
 @Table(name = "enterprise")
 public class Enterprise implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "enterprise_id")
     private long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "document")
     private String document;
-    @Column(name = "phone")
     private String phone;
-    @Column(name = "aaddress")
     private String address;
-    @Column(name = "createdAt")
+
     private LocalDate createdAt=LocalDate.now();
-    @Column (name = "updatedAt")
+
     private LocalDate updateAt=LocalDate.now();
 
-    public Enterprise(){
-
-    }
+    public Enterprise(){}
 
     public Enterprise(long id, String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
         this.id = id;
@@ -45,10 +35,9 @@ public class Enterprise implements Serializable {
         return id;
     }
 
-    public void setId(){
+    public void setId(long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -98,5 +87,3 @@ public class Enterprise implements Serializable {
         this.updateAt = updateAt;
     }
 }
-
-

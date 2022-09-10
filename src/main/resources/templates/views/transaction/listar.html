@@ -10,19 +10,19 @@
     <h1 th:text="${titulo}"></h1>
 </div>
 <div class="container">
-    <a class="btn btn-primary btn" th:href="@{/views/transaction/crear}" th:text="'new transaction'"></a>
+    <a class="btn btn-primary btn" th:href="@{/views/transaction/crear}" th:text="'New transaction'"></a>
     <br>
     <br>
     <table class="table">
-        <thead>
+        <thead class="table-dark">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">concept</th>
             <th scope="col">amount</th>
             <th scope="col">createdAt</th>
             <th scope="col">updatedAt</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Eliminar</th>
+            <th scope="col">Options</th>
+
         </tr>
         </thead>
         <tbody>
@@ -32,8 +32,10 @@
             <td th:text="${tr.amount}"></td>
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
-            <td><a class="btn btn-warning btn" th:href="@{/views/transaction/edit/}+${tr.id}" th:text="'Editar'"></a></td>
-            <td><a class="btn btn-danger btn" th:href="@{/views/transaction/delete/}+${tr.id}" th:text="'Eliminar'"></a></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/views/transaction/edit/}+${tr.id}" th:text="'Editar'"></a>
+                <a class="btn btn-danger" th:href="@{/views/transaction/delete/}+${tr.id}" th:text="'Eliminar'"></a>
+            </td>
         </tr>
         </tbody>
     </table>

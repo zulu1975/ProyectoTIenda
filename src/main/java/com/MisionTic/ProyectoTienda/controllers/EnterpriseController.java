@@ -1,80 +1,55 @@
 package com.MisionTic.ProyectoTienda.controllers;
 
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
-import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
+import com.MisionTic.ProyectoTienda.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
-
 @Controller
-@RequestMapping("/views/enterprises")
+@RequestMapping("/views/enterprise")
 public class EnterpriseController {
 
-    //Aqui estamos inyectando las dependencias hacia el servicio
     @Autowired
-    private IEnterpriseService enterpriseService;
+    private EnterpriseService pruebaService;
 
-    /**
-     * Método para listar las empresas
-     * @param model
-     * @return
-     */
     @GetMapping("/")
-    public String getEnterpriseAll(Model model){
-        List<Enterprise> enterprises = enterpriseService.getAll();
-        model.addAttribute("titulo", "Empresas");
-        model.addAttribute("enterprises", enterprises);
-        return "views/enterprises/listEnterprise";
+    public String  listar(Model model){
+        List<Enterprise> enterprise = pruebaService.listar();
+        model.addAttribute("titulo","Listar Enterprise");
+        model.addAttribute("enterprise", enterprise);
+        return "views/enterprise/listar";
     }
-
-    /**
-     * Método para crear las empresas
-     * @param model
-     * @return
-     */
-    @GetMapping("/create")
-    public String createEnterprise(Model model){
+    @GetMapping("/crear")
+    public String crear(Model model){
         Enterprise enterprise = new Enterprise();
-        model.addAttribute("titulo", "Crear Empresa");
+        model.addAttribute("titulo","Crear enterprise");
         model.addAttribute("enterprise", enterprise);
-        return "views/enterprises/createEnterprise";
+        return "views/enterprise/crear";
     }
 
-    /**
-     * Método para guardar las empresas
-     * @param enterprise
-     * @return
-     */
-
-    @PostMapping("/save")
-    public String saveEnterprise(@ModelAttribute Enterprise enterprise){
-        enterpriseService.save(enterprise);
-        return "redirect:/views/enterprises/";
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute Enterprise enterprise){
+        pruebaService.guardar(enterprise);
+        return "redirect:/views/enterprise/";
     }
 
-    /**
-     * Método para actualizar los datos de una empresa
-     * @param idEnterprise
-     * @param model
-     * @return
-     */
-    @GetMapping("/update/{id}")
-    public String updateEnterprise(@PathVariable("id") Long idEnterprise, Model model){
-        Enterprise enterprise = enterpriseService.buscarPorId(idEnterprise);
-        model.addAttribute("titulo", "Actualizar Empresa");
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable("id") Long idEnterprise, Model model){
+        Enterprise enterprise = pruebaService.buscarId(idEnterprise);
+        model.addAttribute("titulo", "Editar enterprise");
         model.addAttribute("enterprise", enterprise);
-        return "views/enterprises/createEnterprise";
+        return "views/enterprise/crear";
+
+    }
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable("id") Long idEnterprise){
+        pruebaService.eliminar(idEnterprise);
+        return "redirect:/views/enterprise/";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteEnterprise(@PathVariable("id") Long idEnterprise){
-        enterpriseService.delete(idEnterprise);
-        System.out.println("Registro eliminado con exito");
-        return "redirect:/views/enterprises/";
-    }
+
 }

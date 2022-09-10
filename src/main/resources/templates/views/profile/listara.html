@@ -10,19 +10,18 @@
     <h1 th:text="${titulo}"></h1>
 </div>
 <div class="container">
-    <a class="btn btn-primary btn" th:href="@{/views/profile/crea}" th:text="'new profile'"></a>
+    <a class="btn btn-primary btn" th:href="@{/views/profile/crea}" th:text="'New profile'"></a>
     <br>
     <br>
     <table class="table">
-        <thead>
+        <thead class="table-dark">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">image</th>
             <th scope="col">phone</th>
             <th scope="col">createdAt</th>
             <th scope="col">updatedAt</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Eliminar</th>
+            <th>Options</th>
         </tr>
         </thead>
         <tbody>
@@ -32,8 +31,10 @@
             <td th:text="${tr.phone}"></td>
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
-            <td><a class="btn btn-warning btn" th:href="@{/views/profile/edit/}+${tr.id}" th:text="'Editar'"></a></td>
-            <td><a class="btn btn-danger btn" th:href="@{/views/profile/delete/}+${tr.id}" th:text="'Eliminar'"></a></td>
+            <td>
+                <a class="btn btn-success" th:href="@{/views/profile/edit/}+${tr.id}" th:text="'Editar'"></a>
+                <a class="btn btn-danger" th:href="@{/views/profile/delete/}+${tr.id}" th:text="'Eliminar'"></a>
+            </td>
         </tr>
         </tbody>
     </table>
