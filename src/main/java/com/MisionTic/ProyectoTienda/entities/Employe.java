@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table("employe")
+@Table(name = "employe")
 public class Employe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,21 +16,8 @@ public class Employe {
     @Column(name = "created_at")
     private LocalDate createdAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name=profile_id)
-    private Profile profile;
-
-    private Enum_RoleName role;
-
-    @Column (name = "updated_at")
+     @Column (name = "updated_at")
     private LocalDate updateAt;
-
-    @ManyToOne
-    @JoinColumn(name=enterorise_id)
-    private Enterprise enterprise;
-
-    @OneToMany(mappedBy = "employe")
-    private List<Trasaction> transaction;
 
 
     public Employe(){
