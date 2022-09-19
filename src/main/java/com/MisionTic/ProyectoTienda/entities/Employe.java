@@ -1,33 +1,30 @@
 package com.MisionTic.ProyectoTienda.entities;
-import org.springframework.context.annotation.Profile;
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "employe")
-public class Employe {
+public class Employe implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="employe_id")
     private long id;
     private String email;
-    @Column(name = "created_at")
-    private LocalDate createdAt;
 
-     @Column (name = "updated_at")
-    private LocalDate updateAt;
+    private LocalDate createdAt=LocalDate.now();
 
+    private LocalDate updatedAt=LocalDate.now();
 
     public Employe(){
+
     }
 
-    public Employe(long id, String email, LocalDate createdAt, LocalDate updateAt) {
+    public Employe(long id, String email, LocalDate createdAt, LocalDate updatedAt) {
         this.id = id;
         this.email = email;
         this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        this.updatedAt = updatedAt;
     }
 
     public long getId() {
@@ -54,11 +51,23 @@ public class Employe {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdateAt() {
-        return updateAt;
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
     }
 
     public void setUpdateAt(LocalDate updateAt) {
-        this.updateAt = updateAt;
+        this.updatedAt = updateAt;
     }
+
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
+
+
 }
