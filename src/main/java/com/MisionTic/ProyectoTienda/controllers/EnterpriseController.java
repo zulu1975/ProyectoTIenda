@@ -14,11 +14,11 @@ import java.util.List;
 public class EnterpriseController {
 
     @Autowired
-    private EnterpriseService pruebaService;
+    private EnterpriseService enterpriseService;
 
     @GetMapping("/")
     public String  listar(Model model){
-        List<Enterprise> enterprise = pruebaService.listar();
+        List<Enterprise> enterprise = enterpriseService.listar();
         model.addAttribute("titulo","Listar Empresas");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprise/listar";
@@ -33,13 +33,13 @@ public class EnterpriseController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Enterprise enterprise){
-        pruebaService.guardar(enterprise);
+        enterpriseService.guardar(enterprise);
         return "redirect:/views/enterprise/";
     }
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Long idEnterprise, Model model){
-        Enterprise enterprise = pruebaService.buscarId(idEnterprise);
+        Enterprise enterprise = enterpriseService.buscarId(idEnterprise);
         model.addAttribute("titulo", "Editar Empresa");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprise/crear";
@@ -47,7 +47,7 @@ public class EnterpriseController {
     }
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable("id") Long idEnterprise){
-        pruebaService.eliminar(idEnterprise);
+        enterpriseService.eliminar(idEnterprise);
         return "redirect:/views/enterprise/";
     }
 
