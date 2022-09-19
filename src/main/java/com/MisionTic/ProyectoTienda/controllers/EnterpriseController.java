@@ -18,14 +18,14 @@ public class EnterpriseController {
     @GetMapping("/")
     public String  listar(Model model){
         List<Enterprise> enterprise = pruebaService.listar();
-        model.addAttribute("titulo","Listar Enterprise");
+        model.addAttribute("titulo","Listar Empresas");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprise/listar";
     }
     @GetMapping("/crear")
     public String crear(Model model){
         Enterprise enterprise = new Enterprise();
-        model.addAttribute("titulo","Crear enterprise");
+        model.addAttribute("titulo","Crear Empresa");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprise/crear";
     }
@@ -39,7 +39,7 @@ public class EnterpriseController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Long idEnterprise, Model model){
         Enterprise enterprise = pruebaService.buscarId(idEnterprise);
-        model.addAttribute("titulo", "Editar enterprise");
+        model.addAttribute("titulo", "Editar Empresa");
         model.addAttribute("enterprise", enterprise);
         return "views/enterprise/crear";
 
