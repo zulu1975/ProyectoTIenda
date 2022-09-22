@@ -1,10 +1,8 @@
 package com.MisionTic.ProyectoTienda.repositories;
-import com.MisionTic.ProyectoTienda.entities.Transaction;
+import com.MisionTic.ProyectoTienda.entities.Employe;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TransactionRepository extends CrudRepository<Transaction,Long>
-{
-
+public interface EmployeRepository extends CrudRepository <Employe, Long>{
 }

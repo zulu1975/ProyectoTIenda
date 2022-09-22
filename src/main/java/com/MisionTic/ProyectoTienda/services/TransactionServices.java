@@ -1,5 +1,4 @@
 package com.MisionTic.ProyectoTienda.services;
-
 import com.MisionTic.ProyectoTienda.Interfaces.ITransactionService;
 import com.MisionTic.ProyectoTienda.entities.Transaction;
 import com.MisionTic.ProyectoTienda.repositories.TransactionRepository;
@@ -15,8 +14,7 @@ public class TransactionServices implements ITransactionService
     private TransactionRepository transactionRepository;
 
     @Override
-    public List<Transaction> listas() {
-        return (List<Transaction>) transactionRepository.findAll();
+    public List<Transaction> listas() {return (List<Transaction>) transactionRepository.findAll();
     }
 
     @Override

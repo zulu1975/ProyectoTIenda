@@ -4,26 +4,25 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "transaction")
-public class Transaction implements Serializable
-{
+@Table(name = "employe")
+public class Employe implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String concept;
-    private float amount;
+    private String email;
+
     private LocalDate createdAt=LocalDate.now();
+
     private LocalDate updatedAt=LocalDate.now();
 
-    public Transaction()
-    {
+    public Employe(){
 
     }
 
-    public Transaction(long id, String concept, float amount, LocalDate createdAt, LocalDate updatedAt) {
+    public Employe(long id, String email, LocalDate createdAt, LocalDate updatedAt) {
         this.id = id;
-        this.concept = concept;
-        this.amount = amount;
+        this.email = email;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -36,20 +35,12 @@ public class Transaction implements Serializable
         this.id = id;
     }
 
-    public String getConcept() {
-        return concept;
+    public String getEmail() {
+        return email;
     }
 
-    public void setConcept(String concept) {
-        this.concept = concept;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDate getCreatedAt() {
@@ -64,18 +55,19 @@ public class Transaction implements Serializable
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdateAt(LocalDate updateAt) {
+        this.updatedAt = updateAt;
     }
 
     @Override
     public String toString() {
-        return "Transaction{" +
+        return "Employe{" +
                 "id=" + id +
-                ", concept='" + concept + '\'' +
-                ", amount=" + amount +
+                ", email='" + email + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
+
+
 }

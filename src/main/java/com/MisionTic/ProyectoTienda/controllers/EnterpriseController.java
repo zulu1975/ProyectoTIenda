@@ -1,5 +1,4 @@
 package com.MisionTic.ProyectoTienda.controllers;
-
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
 import com.MisionTic.ProyectoTienda.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
