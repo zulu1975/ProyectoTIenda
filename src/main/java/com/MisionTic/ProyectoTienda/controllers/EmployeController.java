@@ -1,6 +1,11 @@
 package com.MisionTic.ProyectoTienda.controllers;
 import com.MisionTic.ProyectoTienda.Interfaces.IEmployeService;
+import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
+import com.MisionTic.ProyectoTienda.Interfaces.IProfileService;
 import com.MisionTic.ProyectoTienda.entities.Employe;
+import com.MisionTic.ProyectoTienda.entities.Enterprise;
+import com.MisionTic.ProyectoTienda.entities.Profile;
+import com.MisionTic.ProyectoTienda.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +19,16 @@ public class EmployeController {
 
     @Autowired
     private IEmployeService employeService;
+    @Autowired
+    private IEnterpriseService enterpriseService;
+
+    @Autowired
+    private IProfileService profileService;
 
     @GetMapping("/")
-    public String listar (Model model)
-    {
+    public String listar (Model model){
         List<Employe> employe = employeService.list();
+        List<Enterprise> listEnterprise = enterpriseService.listar();//Muestra la empresa
         model.addAttribute("titulo", "Empleados");
         model.addAttribute("employe", employe);
         return "views/employe/listar";
@@ -27,8 +37,12 @@ public class EmployeController {
     @GetMapping("/crear")
     public String crear (Model model){
         Employe employe = new Employe();
+        List<Enterprise> listEnterprise = enterpriseService.listar();
+        List<Profile> listProfile = profileService.lista();
         model.addAttribute("titulo", "Nuevo Empleado");
         model.addAttribute("employe", employe);
+        model.addAttribute("enterprise", listEnterprise);
+        model.addAttribute("profile", listProfile);
         return "views/employe/crear";
     }
 

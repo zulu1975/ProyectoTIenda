@@ -20,7 +20,7 @@ public class ProfileController
     public String listara(Model model)
     {
         List<Profile> listados=profileService.lista();
-        model.addAttribute("titulo","lista");
+        model.addAttribute("titulo","Perfiles");
         model.addAttribute("profile",listados);
         return "views/profile/listara";
     }
@@ -29,7 +29,7 @@ public class ProfileController
     public String crea(Model model)
     {
         Profile profile=new Profile();
-        model.addAttribute("titulo","nuevo");
+        model.addAttribute("titulo","Nuevo Perfil");
         model.addAttribute("profile",profile);
         return "views/profile/frmcrea";
     }
@@ -44,7 +44,7 @@ public class ProfileController
     public String editara(@PathVariable("id") Long idProfile, Model model)
     {
         Profile profile=profileService.buscarporID(idProfile);
-        model.addAttribute("titulo","editar");
+        model.addAttribute("titulo","Editar Perfil");
         model.addAttribute("profile", profile);
         return "views/profile/frmcrea";
     }

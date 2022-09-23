@@ -19,7 +19,7 @@ public class TransactionController
     public String listar(Model model)
     {
         List<Transaction> Listado=transactionService.listas();
-        model.addAttribute("titulo","listados");
+        model.addAttribute("titulo","Transacciones");
         model.addAttribute("transaction",Listado);
         return "views/transaction/listar";
 
@@ -29,7 +29,7 @@ public class TransactionController
     public String crear(Model model)
     {
         Transaction transaction=new Transaction();
-        model.addAttribute("titulo","nuevo");
+        model.addAttribute("titulo","Nueva Transacción");
         model.addAttribute("transaction",transaction);
         return "views/transaction/frmcrear";
     }
@@ -45,7 +45,7 @@ public class TransactionController
     public String editar(@PathVariable("id") Long idTransaction, Model model)
     {
         Transaction transaction=transactionService.buscarporId(idTransaction);
-        model.addAttribute("titulo","editar");
+        model.addAttribute("titulo","Editar Transacción");
         model.addAttribute("transaction",transaction);
         return "views/transaction/frmcrear";
     }

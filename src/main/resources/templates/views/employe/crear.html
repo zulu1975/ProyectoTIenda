@@ -15,6 +15,27 @@
       <label for="email">Correo</label>
       <input type="text" th:field="*{email}" class="form-control" id="email"/>
     </div>
+    <div class="form-group">
+      <label for="enterprise">Enterprise</label>
+      <select th:field="*{enterprise}" class="form-control" id="enterprise">
+        <option value="1">--Selecione--</option>
+        <option th:each="en:${enterprise}"
+                th:value="${en.id}"
+                th:text="${en.name}"
+        />
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="profile">Perfil</label>
+      <select th:field="*{profile}" class="form-control" id="profile">
+        <option value="1">--Selecione--</option>
+        <option th:each="pr:${profile}"
+                th:value="${pr.id}"
+                th:text="${pr.phone}"
+        />
+      </select>
+    </div>
     <br>
     <br>
     <input type="submit" class="btn btn-primary" value="Guardar"/>

@@ -16,6 +16,14 @@ public class Employe implements Serializable {
 
     private LocalDate updatedAt=LocalDate.now();
 
+    //Relaciones con la demas tablas
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+    @ManyToOne
+    @JoinColumn(name = "enterprise_id")
+    private Enterprise enterprise;
+
     public Employe(){
 
     }
@@ -33,6 +41,22 @@ public class Employe implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     public String getEmail() {
