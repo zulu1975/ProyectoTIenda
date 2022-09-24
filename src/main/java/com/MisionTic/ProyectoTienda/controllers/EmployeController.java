@@ -4,8 +4,8 @@ import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
 import com.MisionTic.ProyectoTienda.Interfaces.IProfileService;
 import com.MisionTic.ProyectoTienda.entities.Employe;
 import com.MisionTic.ProyectoTienda.entities.Enterprise;
+import com.MisionTic.ProyectoTienda.entities.EnumRole;
 import com.MisionTic.ProyectoTienda.entities.Profile;
-import com.MisionTic.ProyectoTienda.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +42,7 @@ public class EmployeController {
         model.addAttribute("titulo", "Nuevo Empleado");
         model.addAttribute("employe", employe);
         model.addAttribute("enterprise", listEnterprise);
-        model.addAttribute("profile", listProfile);
+        model.addAttribute("enumRole", EnumRole.values());
         return "views/employe/crear";
     }
 

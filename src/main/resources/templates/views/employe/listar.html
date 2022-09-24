@@ -18,7 +18,10 @@
         <thead class="table-dark">
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Teléfono</th>
             <th scope="col">Email</th>
+            <th scope="col">Cargo</th>
             <th scope="col">Empresa</th>
             <th scope="col">F_creación</th>
             <th scope="col">F_actualización</th>
@@ -28,7 +31,10 @@
         <tbody>
         <tr th:each="en:${employe}">
             <th scope="row" th:text="${en.id}"></th>
+            <td th:text="${en.name}"></td>
+            <td th:text="${en.phone}"></td>
             <td th:text="${en.email}"></td>
+            <td th:text="${en.role}"></td>
             <td th:text="${en.enterprise.name}"></td>
             <td th:text="${en.createdAt}"></td>
             <td th:text="${en.updatedAt}"></td>

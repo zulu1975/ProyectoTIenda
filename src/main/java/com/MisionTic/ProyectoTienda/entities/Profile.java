@@ -15,11 +15,6 @@ public class Profile
     private LocalDate createdAt=LocalDate.now();
     private LocalDate updatedAt=LocalDate.now();
 
-    // Relaciones con entidades
-
-    //@OneToOne(mappedBy = "id")
-    //private Employe employe;
-
     public Profile()
     {
 

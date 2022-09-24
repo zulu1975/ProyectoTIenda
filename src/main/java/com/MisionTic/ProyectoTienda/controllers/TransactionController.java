@@ -1,5 +1,7 @@
 package com.MisionTic.ProyectoTienda.controllers;
+import com.MisionTic.ProyectoTienda.Interfaces.IEmployeService;
 import com.MisionTic.ProyectoTienda.Interfaces.ITransactionService;
+import com.MisionTic.ProyectoTienda.entities.Employe;
 import com.MisionTic.ProyectoTienda.entities.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ public class TransactionController
     @Autowired
     private ITransactionService transactionService;
 
+    @Autowired
+    private IEmployeService employeService;
+
     @GetMapping("/")
     public String listar(Model model)
     {
@@ -29,8 +34,10 @@ public class TransactionController
     public String crear(Model model)
     {
         Transaction transaction=new Transaction();
+        //List<Employe> listEmployee = employeService.list();
         model.addAttribute("titulo","Nueva Transacción");
         model.addAttribute("transaction",transaction);
+        //model.addAttribute("employee", listEmployee);
         return "views/transaction/frmcrear";
     }
 

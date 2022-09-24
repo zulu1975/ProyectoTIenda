@@ -17,8 +17,10 @@
         <thead class="table-dark">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">concept</th>
-            <th scope="col">amount</th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Empleado</th>
+            <th scope="col">Empresa</th>
             <th scope="col">createdAt</th>
             <th scope="col">updatedAt</th>
             <th scope="col">Options</th>
@@ -30,6 +32,8 @@
             <th scope="row" th:text="${tr.id}"></th>
             <td th:text="${tr.concept}"></td>
             <td th:text="${tr.amount}"></td>
+            <td>faltante uno</td>
+            <td>faltante dos</td>
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
             <td>
@@ -39,6 +43,9 @@
         </tr>
         </tbody>
     </table>
+    <div class="form-group col-2 ml-10">
+        <input type="text" readonly value="5464565" class="form-control" id="concept"/>
+    </div>
 </div>
 
 <footer th:replace="plantilla/template :: footer"></footer>

@@ -8,13 +8,25 @@
 <header th:replace="plantilla/template :: header"></header>
 <div class="container">
   <h1 th:text="${titulo}"></h1>
-  <form th:action="@{/views/employe/guardar}"   th:object="${employe}"  method="post">
+  <form th:action="@{/views/employe/guardar}"   th:object="${employe}"
+        method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
-
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" th:field="*{name}" class="form-control" id="name"/>
+    </div>
+    <div class="form-group">
+      <label for="phone">Teléfono</label>
+      <input type="text" th:field="*{phone}" class="form-control" id="phone"/>
+    </div>
     <div class="form-group">
       <label for="email">Correo</label>
       <input type="text" th:field="*{email}" class="form-control" id="email"/>
     </div>
+    <!--<div class="form-group">
+      <label for="image">Imagen</label>
+      <input type="file" th:field="*{image}" class="form-control" id="image"/>
+    </div>-->
     <div class="form-group">
       <label for="enterprise">Enterprise</label>
       <select th:field="*{enterprise}" class="form-control" id="enterprise">
@@ -27,12 +39,12 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="profile">Perfil</label>
-      <select th:field="*{profile}" class="form-control" id="profile">
+      <label for="role">Cargo</label>
+      <select th:field="*{role}" class="form-control" id="role">
         <option value="1">--Selecione--</option>
-        <option th:each="pr:${profile}"
-                th:value="${pr.id}"
-                th:text="${pr.phone}"
+        <option th:each="rol:${enumRole}"
+                th:text="${rol.name}"
+                th:value="${rol}"
         />
       </select>
     </div>

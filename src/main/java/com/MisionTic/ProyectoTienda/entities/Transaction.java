@@ -15,17 +15,30 @@ public class Transaction implements Serializable
     private LocalDate createdAt=LocalDate.now();
     private LocalDate updatedAt=LocalDate.now();
 
+    //Relación con la tabla
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employe employe;
+
+    @ManyToOne
+    @JoinColumn(name = "enterprise_id")
+    private Enterprise enterprise;
+
+
     public Transaction()
     {
 
     }
 
-    public Transaction(long id, String concept, float amount, LocalDate createdAt, LocalDate updatedAt) {
+    public Transaction(long id, String concept, float amount, LocalDate createdAt,
+                       LocalDate updatedAt, Employe employe, Enterprise enterprise) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.employe = employe;
+        this.enterprise = enterprise;
     }
 
     public long getId() {
@@ -66,6 +79,22 @@ public class Transaction implements Serializable
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     @Override
