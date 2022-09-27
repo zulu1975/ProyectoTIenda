@@ -14,24 +14,20 @@ public class Usuarios implements Serializable
     @Column (columnDefinition = "integer default 1")
     private Integer estado;
 
+    @Column(unique=true)
     private String username;
 
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "rol_id")
-    private Rol rol;
 
 
     public Usuarios() {
     }
 
-    public Usuarios(long id, Integer estado, String username, String password, Rol rol) {
+    public Usuarios(long id, Integer estado, String username, String password) {
         this.id = id;
         this.estado = estado;
         this.username = username;
         this.password = password;
-        this.rol = rol;
     }
 
     public long getId() {
@@ -64,14 +60,6 @@ public class Usuarios implements Serializable
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     @Override
