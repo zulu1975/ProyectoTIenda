@@ -9,21 +9,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.sql.DataSource;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter
-{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
    @Autowired
     private DataSource dataSource;
 
    @Autowired
-    private BCryptPasswordEncoder passEnconder;
+    private BCryptPasswordEncoder passEncoder;
 
    @Autowired
    public void configurerSecurityGlobal(AuthenticationManagerBuilder builder) throws Exception{
         builder.jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(passEnconder)
-                .usersByUsernameQuery("SELECT password,username,estado FROM usuarios WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT usuarios.username,rol.id FROM usuarios INNER JOIN rol ON usuarios.rol_id=rol.id WHERE rol.rol=?");
+                .passwordEncoder(passEncoder)
+                .usersByUsernameQuery("SELECT username, password, estado FROM usuarios WHERE username=?")
+                .authoritiesByUsernameQuery("SELECT u.username, r.rol FROM rol r INNER JOIN usuarios u ON r.user_id = u.id WHERE u.username=?");
 
 
 

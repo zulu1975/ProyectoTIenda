@@ -11,22 +11,29 @@ public class Rol implements Serializable
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private long id;
-
-     private String usuarios_id;
-
+     @Column(unique=true)
      private String rol;
 
-     @OneToMany(mappedBy = "id")
-     private List<Usuarios> usuarioss;
+     //@Column(unique=true)
+     @ManyToOne
+     @JoinColumn(name = "user_id")
+     private Usuarios user;
 
      public Rol() {
      }
 
-     public Rol(long id, String usuarios_id, String rol, List<Usuarios> usuarioss) {
+     public Rol(long id, String rol, Usuarios user) {
           this.id = id;
-          this.usuarios_id = usuarios_id;
           this.rol = rol;
-          this.usuarioss = usuarioss;
+          this.user = user;
+     }
+
+     public Usuarios getUser() {
+          return user;
+     }
+
+     public void setUser(Usuarios user) {
+          this.user = user;
      }
 
      public long getId() {
@@ -37,14 +44,6 @@ public class Rol implements Serializable
           this.id = id;
      }
 
-     public String getUsuarios_id() {
-          return usuarios_id;
-     }
-
-     public void setUsuarios_id(String usuarios_id) {
-          this.usuarios_id = usuarios_id;
-     }
-
      public String getRol() {
           return rol;
      }
@@ -53,19 +52,10 @@ public class Rol implements Serializable
           this.rol = rol;
      }
 
-     public List<Usuarios> getUsuarioss() {
-          return usuarioss;
-     }
-
-     public void setUsuarioss(List<Usuarios> usuarioss) {
-          this.usuarioss = usuarioss;
-     }
-
      @Override
      public String toString() {
           return "Rol{" +
                   "id=" + id +
-                  ", usuarios_id='" + usuarios_id + '\'' +
                   ", rol='" + rol + '\'' +
                   '}';
      }
