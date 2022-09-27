@@ -1,36 +1,33 @@
 package com.MisionTic.ProyectoTienda.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
-
+import java.util.List;
 
 @Entity
-@Table(name = "Enterprise")
-public class Enterprise {
+@Table(name = "enterprise")
+public class Enterprise implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "Name")
     private String name;
-    @Column(name = "Document")
     private String document;
-    @Column(name = "Phone")
     private String phone;
-    @Column(name = "Aaddress")
     private String address;
-    @Column(name = "CreatedAt")
-    private LocalDate createdAt;
-    @Column (name = "UpdatedAt")
-    private LocalDate updateAt;
 
-    public Enterprise(){
+    //Relación de uno a muchos Empresa=>Empleado
+    @OneToMany(mappedBy = "id")
+    private List<Employe> employee;
 
-    }
+    //Relación de uno a muchos Empresa=>Transacciones
+    @OneToMany(mappedBy = "id")
+    private List<Transaction> transaction;
+    private LocalDate createdAt=LocalDate.now();
+
+    private LocalDate updateAt=LocalDate.now();
+
+    public Enterprise(){}
 
     public Enterprise(long id, String name, String document, String phone, String address, LocalDate createdAt, LocalDate updateAt) {
         this.id = id;
@@ -82,6 +79,22 @@ public class Enterprise {
         this.address = address;
     }
 
+    public List<Employe> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(List<Employe> employee) {
+        this.employee = employee;
+    }
+
+    public List<Transaction> getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(List<Transaction> transaction) {
+        this.transaction = transaction;
+    }
+
     public LocalDate getCreatedAt() {
         return createdAt;
     }
@@ -98,5 +111,3 @@ public class Enterprise {
         this.updateAt = updateAt;
     }
 }
-
-
