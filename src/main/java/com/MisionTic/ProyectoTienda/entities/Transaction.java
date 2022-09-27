@@ -11,16 +11,17 @@ public class Transaction implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String concept;
+
     private float amount;
     private LocalDate createdAt=LocalDate.now();
     private LocalDate updatedAt=LocalDate.now();
 
     //Relación con la tabla
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "employee_id")
     private Employe employe;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
 

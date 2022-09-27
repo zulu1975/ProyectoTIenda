@@ -18,6 +18,28 @@
       <label for="concept">Concepto</label>
       <input type="text" th:field="*{concept}" class="form-control" id="concept" placeholder="concept"/>
     </div>
+
+    <div class="form-group">
+      <label for="enterprise">Enterprise</label>
+      <select th:field="*{enterprise}" class="form-control" id="enterprise">
+        <option selected th:each="en:${enterprise}"
+                th:value="${en.id}"
+                th:text="${en.name}"
+        />
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="enterprise">Enterprise</label>
+      <select th:field="*{employe}" class="form-control" id="employe">
+        <option selected th:each="en:${employee}"
+                th:value="${en.id}"
+                th:text="${en.name}"
+        />
+
+      </select>
+    </div>
+
     <br>
     <br>
     <input type="submit" class="btn btn-primary" value="Guardar"/>

@@ -9,10 +9,11 @@
 <div class="container">
     <h1 th:text="${titulo}"></h1>
 </div>
-<div class="container">
-    <a class="btn btn-primary btn" th:href="@{/views/transaction/crear}" th:text="'New transaction'"></a>
-    <br>
-    <br>
+<div class="container mt-4">
+    <a class="btn btn-primary btn-sm mb-2" th:href="@{/views/transaction/crear}"
+       th:text="'Nueva transaction'" title="Crear nuevo registro">
+    </a>
+
     <table class="table">
         <thead class="table-dark">
         <tr>
@@ -32,8 +33,8 @@
             <th scope="row" th:text="${tr.id}"></th>
             <td th:text="${tr.concept}"></td>
             <td th:text="${tr.amount}"></td>
-            <td>faltante uno</td>
-            <td>faltante dos</td>
+            <td th:text="${tr.employe.name}"></td>
+            <td th:text="${tr.enterprise.name}"></td>
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
             <td>
@@ -43,8 +44,8 @@
         </tr>
         </tbody>
     </table>
-    <div class="form-group col-2 ml-10">
-        <input type="text" readonly value="5464565" class="form-control" id="concept"/>
+    <div class="form-group col-2 mr-10">
+        <input type="text" readonly th:value="*{suma}" class="form-control"/>
     </div>
 </div>
 
