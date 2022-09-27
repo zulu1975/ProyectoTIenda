@@ -1,8 +1,11 @@
 package com.MisionTic.ProyectoTienda.controllers;
 import com.MisionTic.ProyectoTienda.Interfaces.IEmployeService;
+import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
 import com.MisionTic.ProyectoTienda.Interfaces.ITransactionService;
 import com.MisionTic.ProyectoTienda.entities.Employe;
+import com.MisionTic.ProyectoTienda.entities.Enterprise;
 import com.MisionTic.ProyectoTienda.entities.Transaction;
+import com.MisionTic.ProyectoTienda.services.TransactionServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +21,22 @@ public class TransactionController
     private ITransactionService transactionService;
 
     @Autowired
+    private TransactionServices transactionServices;
+
+    @Autowired
     private IEmployeService employeService;
+    @Autowired
+    private IEnterpriseService enterpriseService;
 
     @GetMapping("/")
     public String listar(Model model)
     {
-        List<Transaction> Listado=transactionService.listas();
+        List<Transaction> listTransaction = transactionService.listas();
+        float suma = transactionServices.suma();
+        System.out.println("La suma de todo es" + suma);
         model.addAttribute("titulo","Transacciones");
-        model.addAttribute("transaction",Listado);
+        model.addAttribute("transaction",listTransaction);
+        model.addAttribute("suma",suma);
         return "views/transaction/listar";
 
     }
@@ -34,10 +45,12 @@ public class TransactionController
     public String crear(Model model)
     {
         Transaction transaction=new Transaction();
-        //List<Employe> listEmployee = employeService.list();
+        Employe employee = employeService.searchById(1L);
+        Enterprise enterprise = enterpriseService.buscarId(1L);
         model.addAttribute("titulo","Nueva Transacción");
         model.addAttribute("transaction",transaction);
-        //model.addAttribute("employee", listEmployee);
+        model.addAttribute("employee", employee);
+        model.addAttribute("enterprise", enterprise);
         return "views/transaction/frmcrear";
     }
 
@@ -52,8 +65,12 @@ public class TransactionController
     public String editar(@PathVariable("id") Long idTransaction, Model model)
     {
         Transaction transaction=transactionService.buscarporId(idTransaction);
+        Employe employee = employeService.searchById(1L);
+        Enterprise enterprise = enterpriseService.buscarId(1L);
         model.addAttribute("titulo","Editar Transacción");
         model.addAttribute("transaction",transaction);
+        model.addAttribute("employee", employee);
+        model.addAttribute("enterprise", enterprise);
         return "views/transaction/frmcrear";
     }
 

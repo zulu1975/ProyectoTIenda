@@ -3,6 +3,7 @@ import com.MisionTic.ProyectoTienda.Interfaces.ITransactionService;
 import com.MisionTic.ProyectoTienda.entities.Transaction;
 import com.MisionTic.ProyectoTienda.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +31,9 @@ public class TransactionServices implements ITransactionService
     @Override
     public void eliminar(Long id) {
        transactionRepository.deleteById(id);
+    }
+
+    public float suma(){
+        return transactionRepository.sumAmount();
     }
 }

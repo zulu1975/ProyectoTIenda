@@ -21,16 +21,14 @@ public class EmployeController {
     private IEmployeService employeService;
     @Autowired
     private IEnterpriseService enterpriseService;
-
     @Autowired
     private IProfileService profileService;
 
     @GetMapping("/")
     public String listar (Model model){
-        List<Employe> employe = employeService.list();
-        List<Enterprise> listEnterprise = enterpriseService.listar();//Muestra la empresa
+        List<Employe> listEmployee = employeService.list();
         model.addAttribute("titulo", "Empleados");
-        model.addAttribute("employe", employe);
+        model.addAttribute("employee", listEmployee);
         return "views/employe/listar";
     }
 
@@ -38,7 +36,6 @@ public class EmployeController {
     public String crear (Model model){
         Employe employe = new Employe();
         List<Enterprise> listEnterprise = enterpriseService.listar();
-        List<Profile> listProfile = profileService.lista();
         model.addAttribute("titulo", "Nuevo Empleado");
         model.addAttribute("employe", employe);
         model.addAttribute("enterprise", listEnterprise);
@@ -55,8 +52,11 @@ public class EmployeController {
     @GetMapping("/editar/{id}")
     public String searchById (@PathVariable("id") Long idEmploye, Model model){
         Employe employe = employeService.searchById(idEmploye);
+        List<Enterprise> listEnterprise = enterpriseService.listar();
         model.addAttribute("titulo", "Actualizar Empleado");
         model.addAttribute("employe", employe);
+        model.addAttribute("enterprise", listEnterprise);
+        model.addAttribute("enumRole", EnumRole.values());
         return "views/employe/crear";
     }
 
