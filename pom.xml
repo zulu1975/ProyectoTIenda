@@ -50,6 +50,14 @@
 			<version>5.3.22</version>
 		</dependency>
 
+
+			<!-- ... dependencia_seguridad ... -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+
 		<!-- SQL -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
