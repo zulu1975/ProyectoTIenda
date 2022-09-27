@@ -34,6 +34,7 @@ public class TransactionServices implements ITransactionService
     }
 
     public float suma(){
-        return transactionRepository.sumAmount();
+            return transactionRepository.sumAmount();
+
     }
 }

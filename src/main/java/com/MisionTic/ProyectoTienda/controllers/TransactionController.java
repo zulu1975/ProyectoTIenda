@@ -32,11 +32,15 @@ public class TransactionController
     public String listar(Model model)
     {
         List<Transaction> listTransaction = transactionService.listas();
-        float suma = transactionServices.suma();
-        System.out.println("La suma de todo es" + suma);
+        try{
+            float suma = transactionServices.suma();
+            model.addAttribute("suma",suma);
+
+        }catch (Exception e){
+            e.getMessage();
+        }
         model.addAttribute("titulo","Transacciones");
         model.addAttribute("transaction",listTransaction);
-        model.addAttribute("suma",suma);
         return "views/transaction/listar";
 
     }
