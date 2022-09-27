@@ -16,7 +16,7 @@ public class Employe implements Serializable {
     private String phone;
     private String email;
 
-    //private String image; pendiente por agregar
+    private String image; //atributo para imagenes
     @Enumerated(EnumType.STRING)
     private EnumRole role;
 
@@ -33,13 +33,12 @@ public class Employe implements Serializable {
 
     }
 
-    public Employe(long id, String name, String phone, String email,
-                   EnumRole role, LocalDate createdAt, LocalDate updatedAt,
-                   Enterprise enterprise) {
+    public Employe(long id, String name, String phone, String email, String image, EnumRole role, LocalDate createdAt, LocalDate updatedAt, Enterprise enterprise) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.image = image;
         this.role = role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -122,5 +121,11 @@ public class Employe implements Serializable {
                 '}';
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
