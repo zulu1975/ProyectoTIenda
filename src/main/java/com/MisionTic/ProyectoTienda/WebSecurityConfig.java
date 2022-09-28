@@ -17,13 +17,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
    @Autowired
     private BCryptPasswordEncoder passEncoder;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().mvcMatchers("/").permitAll()
-                .antMatchers("/views/enterprise/").hasAnyRole("USER")
-                .antMatchers("/views/enterprise/crear").hasAnyRole("ADMIN");
-    }
 
+     // @Override
+      /**protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/index").permitAll()
+                .antMatchers("/views/enterprise/crear").hasAnyRole("USER")
+                .antMatchers("/views/transaction/crear").hasAnyRole("USER")
+                .antMatchers("/views/employe/crear").hasAnyRole("USER")
+                .antMatchers("/views/enterprise/editar/{id}").hasAnyRole("USER")
+                .antMatchers("/views/transaction/edit/{id}").hasAnyRole("USER")
+                .antMatchers("/views/employe/editar/{id}").hasAnyRole("USER")
+                .antMatchers("/views/enterprise/eliminar/{id}").hasAnyRole("USER")
+                .antMatchers("/views/transaction/delete/{id}").hasAnyRole("USER")
+                .antMatchers("/views/employe/eliminar/{id}").hasAnyRole("USER")
+                //.antMatchers("/views/enterprise/").hasAnyRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .logout().permitAll();
+     } **/
     @Autowired
    public void configurerSecurityGlobal(AuthenticationManagerBuilder builder) throws Exception{
         builder.jdbcAuthentication()
