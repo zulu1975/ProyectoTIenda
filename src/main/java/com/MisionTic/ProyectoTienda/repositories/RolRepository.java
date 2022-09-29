@@ -1,9 +1,9 @@
 package com.MisionTic.ProyectoTienda.repositories;
-import com.MisionTic.ProyectoTienda.entities.Employe;
+
+import com.MisionTic.ProyectoTienda.entities.Rol;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeRepository extends CrudRepository <Employe, Long>{
-
+public interface RolRepository extends CrudRepository<Rol, Long> {
 }

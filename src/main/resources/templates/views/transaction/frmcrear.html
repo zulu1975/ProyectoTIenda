@@ -6,8 +6,8 @@
 </head>
 <body>
 <header th:replace="plantilla/template :: header"></header>
-<div class="container">
-  <h1 th:text="${titulo}"></h1>
+<div class="container col-6 shadow-lg p-3 mb-5 bg-body rounded">
+  <h2 th:text="${titulo}"></h2>
   <form th:action="@{/views/transaction/save}"   th:object="${transaction}"  method="post">
     <input type="hidden" th:field="*{id}">
     <div class="form-group">
@@ -18,7 +18,28 @@
       <label for="concept">Concepto</label>
       <input type="text" th:field="*{concept}" class="form-control" id="concept" placeholder="concept"/>
     </div>
-    <br>
+
+    <div class="form-group">
+      <label for="enterprise">Enterprise</label>
+      <select th:field="*{enterprise}" class="form-control" id="enterprise">
+        <option selected th:each="en:${enterprise}"
+                th:value="${en.id}"
+                th:text="${en.name}"
+        />
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="enterprise">Enterprise</label>
+      <select th:field="*{employe}" class="form-control" id="employe">
+        <option selected th:each="en:${employee}"
+                th:value="${en.id}"
+                th:text="${en.name}"
+        />
+
+      </select>
+    </div>
+
     <br>
     <input type="submit" class="btn btn-primary" value="Guardar"/>
     <a class="btn btn-secondary" th:href="@{/views/transaction/}" title="Cancelar">Cancelar</a>

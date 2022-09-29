@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="plantilla/template :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container mt-4 col-4 shadow-lg p-3 mb-5 bg-body rounded">
+<h2 class="text-center mb-5">Iniciar Sesion</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group mb-3" id="user-group">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="username"/>
+                </div>
+                <div class="form-group mb-3" id="contrasena-group">
+                    <input type="password" class="form-control" placeholder="Contrasena" name="password"/>
+                </div>
+                <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+
+                </div>
+            </form>
+
+            <div th:if="${param.error}" class=" text-center alert alert-danger" role="alert">
+                Usuario o contraseña incorrecta
+            </div>
+            <div th:if="${param.logout}" class=" text-center alert alert-success" role="alert">
+                Has cerrado sesion con éxito
+            </div>
+</div>
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
