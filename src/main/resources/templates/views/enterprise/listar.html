@@ -7,7 +7,7 @@
 <body>
 <header th:replace="plantilla/template :: header"></header>
 <div class="container">
-    <h1 th:text="${titulo}"></h1>
+    <h2 th:text="${titulo}"></h2>
 </div>
 <div class="container mt-4">
     <a class="btn btn-primary btn-sm mb-2" th:href="@{/views/enterprise/crear}"
@@ -24,7 +24,7 @@
             <th scope="col">Dirección</th>
             <th scope="col">F_creación</th>
             <th scope="col">F_actualización</th>
-            <th>Options</th>
+            <th>Opciones</th>
         </tr>
         </thead>
         <tbody>
@@ -37,8 +37,12 @@
             <td th:text="${en.createdAt}"></td>
             <td th:text="${en.updateAt}"></td>
             <td>
-                <a class="btn btn-success" th:href="@{/views/enterprise/editar/}+${en.id}" title="Editar registro">Update</a>
-                <a class="btn btn-danger" th:href="@{/views/enterprise/eliminar/}+${en.id}" title="Eliminar registro">Delete</a>
+                <a class="btn btn-success" th:href="@{/views/enterprise/editar/}+${en.id}" title="Editar registro">
+                    <i class='fas fa-edit'></i>
+                </a>
+                <a class="btn btn-danger" th:href="@{/views/enterprise/eliminar/}+${en.id}" title="Eliminar registro">
+                    <i class='fas fa-trash-alt'></i>
+                </a>
             </td>
         </tr>
         </tbody>

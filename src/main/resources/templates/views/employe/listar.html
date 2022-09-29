@@ -3,11 +3,12 @@
 <head th:replace="plantilla/template :: head">
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://kit.fontawesome.com/fcc2559b13.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header th:replace="plantilla/template :: header"></header>
 <div class="container">
-    <h1 th:text="${titulo}"></h1>
+    <h2 th:text="${titulo}"></h2>
 </div>
 <div class="container mt-4">
     <a class="btn btn-primary btn-sm mb-2" th:href="@{/views/employe/crear}"
@@ -21,12 +22,12 @@
             <th scope="col">Nombre</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Email</th>
-            <th scope="col">Imagen</th>
+            <!--<th scope="col">Imagen</th>-->
             <th scope="col">Cargo</th>
             <th scope="col">Empresa</th>
             <th scope="col">F_creación</th>
             <th scope="col">F_actualización</th>
-            <th>Options</th>
+            <th >Opciones</th>
         </tr>
         </thead>
         <tbody>
@@ -35,14 +36,17 @@
             <td th:text="${en.name}"></td>
             <td th:text="${en.phone}"></td>
             <td th:text="${en.email}"></td>
-            <td th:text="${en.image}"></td>
-            <td th:text="${en.role}"></td>
+            <td th:text="${en.rol.rol}"></td>
             <td th:text="${en.enterprise.name}"></td>
             <td th:text="${en.createdAt}"></td>
             <td th:text="${en.updatedAt}"></td>
             <td>
-                <a class="btn btn-success" th:href="@{/views/employe/editar/}+${en.id}" title="Editar registro">Update</a>
-                <a class="btn btn-danger" th:href="@{/views/employe/eliminar/}+${en.id}" title="Eliminar registro">Delete</a>
+                <a class="btn btn-success" th:href="@{/views/employe/editar/}+${en.id}" title="Editar registro">
+                    <i class='fas fa-edit'></i>
+                </a>
+                <a class="btn btn-danger" th:href="@{/views/employe/eliminar/}+${en.id}" title="Eliminar registro">
+                    <i class='fas fa-trash-alt'></i>
+                </a>
             </td>
         </tr>
         </tbody>

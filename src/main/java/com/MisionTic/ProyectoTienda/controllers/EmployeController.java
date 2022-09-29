@@ -3,10 +3,8 @@ import antlr.StringUtils;
 import com.MisionTic.ProyectoTienda.Interfaces.IEmployeService;
 import com.MisionTic.ProyectoTienda.Interfaces.IEnterpriseService;
 import com.MisionTic.ProyectoTienda.Interfaces.IProfileService;
-import com.MisionTic.ProyectoTienda.entities.Employe;
-import com.MisionTic.ProyectoTienda.entities.Enterprise;
-import com.MisionTic.ProyectoTienda.entities.EnumRole;
-import com.MisionTic.ProyectoTienda.entities.Profile;
+import com.MisionTic.ProyectoTienda.entities.*;
+import com.MisionTic.ProyectoTienda.services.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +27,7 @@ public class EmployeController {
     @Autowired
     private IEnterpriseService enterpriseService;
     @Autowired
-    private IProfileService profileService;
+    private RolService rolService;
 
     @GetMapping("/")
     public String listar (Model model){
@@ -43,16 +41,20 @@ public class EmployeController {
     public String crear (Model model){
         Employe employe = new Employe();
         List<Enterprise> listEnterprise = enterpriseService.listar();
+        List<Rol> listRol = rolService.listar();
         model.addAttribute("titulo", "Nuevo Empleado");
         model.addAttribute("employe", employe);
         model.addAttribute("enterprise", listEnterprise);
-        model.addAttribute("enumRole", EnumRole.values());
+        model.addAttribute("rol", listRol);
+        //model.addAttribute("enumRole", EnumRole.values());
         return "views/employe/crear";
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Employe employe, @RequestParam("file")MultipartFile imagen) {
+    public String guardar(@ModelAttribute Employe employe) {
        employeService.guardar(employe);
+        /*
+        parametro requerido (, @RequestParam("file")MultipartFile imagen)
         if (!imagen.isEmpty()){
             //ruta relativa
             Path directorioImagenes= Paths.get("src//main//resources/img");
@@ -68,7 +70,7 @@ public class EmployeController {
             } catch (IOException e){
                 e.printStackTrace();
             }
-        }
+        }*/
 
 
         return "redirect:/views/employe/";
@@ -78,11 +80,11 @@ public class EmployeController {
     public String searchById (@PathVariable("id") Long idEmploye, Model model){
         Employe employe = employeService.searchById(idEmploye);
         List<Enterprise> listEnterprise = enterpriseService.listar();
-        List<Profile> listProfile = profileService.lista();
+        List<Rol> listRol = rolService.listar();
         model.addAttribute("titulo", "Actualizar Empleado");
         model.addAttribute("employe", employe);
         model.addAttribute("enterprise", listEnterprise);
-        model.addAttribute("enumRole", EnumRole.values());
+        model.addAttribute("rol", listRol);
         return "views/employe/crear";
     }
 

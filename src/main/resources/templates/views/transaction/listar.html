@@ -6,10 +6,10 @@
 </head>
 <body>
 <header th:replace="plantilla/template :: header"></header>
-<div class="container">
-    <h1 th:text="${titulo}"></h1>
+<div class="container col-10">
+    <h2 th:text="${titulo}"></h2>
 </div>
-<div class="container mt-4">
+<div class="container mt-4 col-10">
     <a class="btn btn-primary btn-sm mb-2" th:href="@{/views/transaction/crear}"
        th:text="'Nueva transaction'" title="Crear nuevo registro">
     </a>
@@ -22,9 +22,9 @@
             <th scope="col">Monto</th>
             <th scope="col">Empleado</th>
             <th scope="col">Empresa</th>
-            <th scope="col">createdAt</th>
-            <th scope="col">updatedAt</th>
-            <th scope="col">Options</th>
+            <th scope="col">F_creación</th>
+            <th scope="col">F_actualización</th>
+            <th scope="col">Opciones</th>
 
         </tr>
         </thead>
@@ -38,8 +38,12 @@
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
             <td>
-                <a class="btn btn-success" th:href="@{/views/transaction/edit/}+${tr.id}" th:text="'Editar'"></a>
-                <a class="btn btn-danger" th:href="@{/views/transaction/delete/}+${tr.id}" th:text="'Eliminar'"></a>
+                <a class="btn btn-success" th:href="@{/views/transaction/edit/}+${tr.id}" title="Editar registro">
+                    <i class='fas fa-edit'></i>
+                </a>
+                <a class="btn btn-danger" th:href="@{/views/transaction/delete/}+${tr.id}" title="Eliminar registro">
+                    <i class='fas fa-trash-alt'></i>
+                </a>
             </td>
         </tr>
         </tbody>

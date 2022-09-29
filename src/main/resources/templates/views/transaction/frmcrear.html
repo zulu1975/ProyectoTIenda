@@ -6,8 +6,8 @@
 </head>
 <body>
 <header th:replace="plantilla/template :: header"></header>
-<div class="container">
-  <h1 th:text="${titulo}"></h1>
+<div class="container col-6 shadow-lg p-3 mb-5 bg-body rounded">
+  <h2 th:text="${titulo}"></h2>
   <form th:action="@{/views/transaction/save}"   th:object="${transaction}"  method="post">
     <input type="hidden" th:field="*{id}">
     <div class="form-group">
@@ -40,7 +40,6 @@
       </select>
     </div>
 
-    <br>
     <br>
     <input type="submit" class="btn btn-primary" value="Guardar"/>
     <a class="btn btn-secondary" th:href="@{/views/transaction/}" title="Cancelar">Cancelar</a>

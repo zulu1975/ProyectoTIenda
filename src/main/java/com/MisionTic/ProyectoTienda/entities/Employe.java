@@ -17,14 +17,17 @@ public class Employe implements Serializable {
     private String email;
 
     private String image; //atributo para imagenes
-    @Enumerated(EnumType.STRING)
-    private EnumRole role;
+    //@Enumerated(EnumType.STRING)
+    //private EnumRole role;
 
     private LocalDate createdAt=LocalDate.now();
 
     private LocalDate updatedAt=LocalDate.now();
 
     //Relaciones con la tabla empresa
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
     @ManyToOne
     @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
@@ -33,15 +36,16 @@ public class Employe implements Serializable {
 
     }
 
-    public Employe(long id, String name, String phone, String email, String image, EnumRole role, LocalDate createdAt, LocalDate updatedAt, Enterprise enterprise) {
+    public Employe(long id, String name, String phone, String email, String image,
+                   LocalDate createdAt, LocalDate updatedAt, Rol rol, Enterprise enterprise) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.image = image;
-        this.role = role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.rol = rol;
         this.enterprise = enterprise;
     }
 
@@ -91,14 +95,6 @@ public class Employe implements Serializable {
         return createdAt;
     }
 
-    public EnumRole getRole() {
-        return role;
-    }
-
-    public void setRole(EnumRole role) {
-        this.role = role;
-    }
-
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
@@ -109,6 +105,18 @@ public class Employe implements Serializable {
 
     public void setUpdateAt(LocalDate updateAt) {
         this.updatedAt = updateAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     @Override
