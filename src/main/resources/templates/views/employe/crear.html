@@ -6,10 +6,9 @@
 </head>
 <body>
 <header th:replace="plantilla/template :: header"></header>
-<div class="container">
-  <h1 th:text="${titulo}"></h1>
-  <form th:action="@{/views/employe/guardar}"   th:object="${employe}"
-        method="post" enctype="multipart/form-data">
+<div class="container col-6 shadow-lg p-3 mb-5 bg-body rounded">
+  <h2 th:text="${titulo}"></h2>
+  <form th:action="@{/views/employe/guardar}"   th:object="${employe}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
     <div class="form-group">
       <label for="name">Nombre</label>
@@ -23,10 +22,17 @@
       <label for="email">Correo</label>
       <input type="text" th:field="*{email}" class="form-control" id="email"/>
     </div>
+
     <!--<div class="form-group">
-      <label for="image">Imagen</label>
-      <input type="file" th:field="*{image}" class="form-control" id="image"/>
+      <br>
+      <label for="file">Imagen</label>
+      <input type="file" name="file" id="file" multiple onchange="processSelectedFiles(this)">
+    </div>
+    <div class="form-group">
+      <br>
+      <input type="text" name="res" th:field="*{image}" class="form-control" id="res" style="display:none" />
     </div>-->
+
     <div class="form-group">
       <label for="enterprise">Enterprise</label>
       <select th:field="*{enterprise}" class="form-control" id="enterprise">
@@ -39,21 +45,31 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="role">Cargo</label>
-      <select th:field="*{role}" class="form-control" id="role">
+      <label for="rol">Cargo</label>
+      <select th:field="*{rol}" class="form-control" id="rol">
         <option value="1">--Selecione--</option>
-        <option th:each="rol:${enumRole}"
-                th:text="${rol.name}"
-                th:value="${rol}"
+        <option th:each="r:${rol}"
+                th:value="${r.id}"
+                th:text="${r.rol}"
         />
+
       </select>
     </div>
-    <br>
     <br>
     <input type="submit" class="btn btn-primary" value="Guardar"/>
     <a class="btn btn-secondary" th:href="@{/views/employe/}" title="Cancelar">Cancelar</a>
   </form>
 </div>
+<script>
+function processSelectedFiles(fileInput) {
+  var files = fileInput.files;
+
+  for (var i = 0; i < files.length; i++) {
+    alert("Filename " + files[i].name);
+    document.getElementById('res').value= files[i].name;
+  }
+}
+</script>
 
 <footer th:replace="plantilla/template :: footer"></footer>
 </body>

@@ -16,13 +16,6 @@ public class Enterprise implements Serializable {
     private String phone;
     private String address;
 
-    //Relación de uno a muchos Empresa=>Empleado
-    @OneToMany(mappedBy = "id")
-    private List<Employe> employee;
-
-    //Relación de uno a muchos Empresa=>Transacciones
-    @OneToMany(mappedBy = "id")
-    private List<Transaction> transaction;
     private LocalDate createdAt=LocalDate.now();
 
     private LocalDate updateAt=LocalDate.now();
@@ -78,23 +71,7 @@ public class Enterprise implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public List<Employe> getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(List<Employe> employee) {
-        this.employee = employee;
-    }
-
-    public List<Transaction> getTransaction() {
-        return transaction;
-    }
-
-    public void setTransaction(List<Transaction> transaction) {
-        this.transaction = transaction;
-    }
-
+    
     public LocalDate getCreatedAt() {
         return createdAt;
     }
