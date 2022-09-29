@@ -68,18 +68,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<exections>
+				<executions>
 					<execution>
 						<goals>
 							<goal>build-info</goal>
 						</goals>
 						<configuration>
-							<aditionalProperties>
+							<additionalProperties>
 								<encoding.source>${project.build.sourceEncoding}</encoding.source>
-								<enconding.reporting${proyect.reporting.emputEncoding}</encoding.reporting>
+								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
 								<java.source>${maven.compiler.source}</java.source>
-								<java.target>${maven.compiler.target}</javatarjet>
-							</aditionalProperties>
+								<java.target>${maven.compiler.target}</java.target>
+							</additionalProperties>
 						</configuration>
 					</execution>
 				</executions>
