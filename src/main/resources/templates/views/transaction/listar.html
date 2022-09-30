@@ -24,7 +24,7 @@
             <th scope="col">Empresa</th>
             <th scope="col">F_creación</th>
             <th scope="col">F_actualización</th>
-            <th scope="col">Opciones</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Opciones</th>
 
         </tr>
         </thead>
@@ -38,10 +38,10 @@
             <td th:text="${tr.createdAt}"></td>
             <td th:text="${tr.updatedAt}"></td>
             <td>
-                <a class="btn btn-success" th:href="@{/views/transaction/edit/}+${tr.id}" title="Editar registro">
+                <a class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/views/transaction/edit/}+${tr.id}" title="Editar registro">
                     <i class='fas fa-edit'></i>
                 </a>
-                <a class="btn btn-danger" th:href="@{/views/transaction/delete/}+${tr.id}" title="Eliminar registro">
+                <a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/views/transaction/delete/}+${tr.id}" title="Eliminar registro">
                     <i class='fas fa-trash-alt'></i>
                 </a>
             </td>
