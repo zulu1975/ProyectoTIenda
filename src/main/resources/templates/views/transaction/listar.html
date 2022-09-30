@@ -41,8 +41,10 @@
                 <a class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/views/transaction/edit/}+${tr.id}" title="Editar registro">
                     <i class='fas fa-edit'></i>
                 </a>
-                <a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/views/transaction/delete/}+${tr.id}" title="Eliminar registro">
-                    <i class='fas fa-trash-alt'></i>
+                <a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/views/transaction/delete/}+${tr.id}" title="Eliminar registro"
+                   onclick="return confirm('Esta seguro de eliminar el registro?');">
+                   <i class='fas fa-trash-alt'></i>
+
                 </a>
             </td>
         </tr>

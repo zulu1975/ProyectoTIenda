@@ -40,7 +40,8 @@
                 <a class="btn btn-success" th:href="@{/views/enterprise/editar/}+${en.id}" title="Editar registro">
                     <i class='fas fa-edit'></i>
                 </a>
-                <a class="btn btn-danger" th:href="@{/views/enterprise/eliminar/}+${en.id}" title="Eliminar registro">
+                <a class="btn btn-danger" th:href="@{/views/enterprise/eliminar/}+${en.id}" title="Eliminar registro"
+                   onclick="return confirm('Esta seguro de eliminar el registro?');">
                     <i class='fas fa-trash-alt'></i>
                 </a>
             </td>

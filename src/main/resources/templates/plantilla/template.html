@@ -28,20 +28,20 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" sec:authorize="isAuthenticated()">
             <a class="nav-link text-white" th:href="@{/views/transaction/}">Transacciones
               <i class='fas fa-donate' style='color:white'></i>
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" sec:authorize="isAuthenticated()">
             <a class="nav-link text-white" th:href="@{/views/enterprise/}">Empresas
               <i class='fas fa-building' style='color:white'></i>
             </a>
 
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" sec:authorize="isAuthenticated()">
             <a class="nav-link text-white" th:href="@{/views/employe/}">Empleados
               <i class='fas fa-users' style='color:white'></i>
             </a>
@@ -54,6 +54,7 @@
             Iniciar sesion
           </a>
         </div>
+        <p sec:authorize="isAuthenticated()" class="text-white position-absolute top-50 end-0 translate-middle me-4">Bienvenid@  <span sec:authentication="name"></span></p>
         <div sec:authorize="isAuthenticated()" class="position-absolute top-50 end-0 translate-middle me-4">
           <form th:action="@{/logout}" method="post">
             <button class="dropdown-item" type="submit" title="Cerrar sesion">
